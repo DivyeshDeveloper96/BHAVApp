@@ -1,0 +1,117 @@
+{
+  "yatra_id": 101,
+  "slug": "pandharpur-yatra-2026",
+  "title": "Pandharpur Yatra",
+  "subtitle": "HH Bhakti Ashraya Vaisnava Swami",
+  "date_range": "16–18 Jan 2026",
+  "status": "registration_open",
+  "youtube": {
+    "video_id": "Xepp0iaPcJI"
+  },
+  "alerts": [
+    {
+      "type": "warning",
+      "message": "Room and bus bookings are closed (deadline was 10 Nov 2025). You may still register and receive prasad for 3 days, but must arrange your own accommodation and travel."
+    }
+  ],
+  "sections": [
+    {
+      "type": "table",
+      "title": "🗓️ Yatra Dates",
+      "rows": [
+        {
+          "label": "Arrival at Sri Pandharpur Dham",
+          "value": "16th Jan 2026 (Friday) Morning 10:00 AM"
+        },
+        {
+          "label": "Departure from Sri Pandharpur Dham",
+          "value": "18th Jan 2026 (Sunday) 2:00 PM"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "💰 Yatra Charges",
+      "content": "Registration Charges: ₹2,100 per person"
+    },
+    {
+      "type": "list",
+      "title": "✅ What’s Included?",
+      "items": [
+        "Registration and internal travel to Sri Vitthal–Rukmini Temple only",
+        "Three daily meals — Breakfast, Lunch & Dinner"
+      ]
+    },
+    {
+      "type": "list",
+      "title": "🚫 What’s Not Included?",
+      "items": [
+        "Accommodation in Pandharpur",
+        "Transit accommodation in Pune (if applicable)",
+        "Travel between Pune and Pandharpur"
+      ]
+    },
+    {
+      "type": "note",
+      "content": "GST 5% will be additional on the total amount"
+    },
+    {
+      "type": "children_policy",
+      "title": "👶 Children Policy",
+      "groups": [
+        {
+          "age_range": "Below 5 years (as of 1 Jan 2026)",
+          "rules": [
+            "100% waiver on registration charges",
+            "No registration required",
+            "No separate seat in buses"
+          ]
+        },
+        {
+          "age_range": "Between 5 and 10 years (as of 1 Jan 2026)",
+          "rules": [
+            "50% waiver on registration charges",
+            "Registration is mandatory",
+            "No separate seat in buses",
+            "Full transportation charge applies if seat is required"
+          ],
+          "note": "These children are counted for room capacity and must be assigned a bed/mattress."
+        }
+      ]
+    },
+    {
+      "type": "travel_info",
+      "title": "🛕 How to Reach Pandharpur",
+      "modes": [
+        {
+          "mode": "Road",
+          "icon": "car",
+          "content": "Pandharpur is well connected by road. Pune is approx 204 km and Mumbai is approx 386 km away. Bijapur (100 km) and Solapur (74 km) are nearby cities with direct connectivity."
+        },
+        {
+          "mode": "Train",
+          "icon": "train",
+          "content": "Nearest railway stations are Kurdwadi (50 km) and Solapur (74 km). Both stations are well connected with major cities like Mumbai, Pune, Bangalore, Chennai, Delhi, and Hyderabad."
+        },
+        {
+          "mode": "Air",
+          "icon": "flight",
+          "content": "Nearest domestic airport is Pune (204 km). From Pune, Pandharpur can be reached by road or via train through Solapur or Kurdwadi."
+        }
+      ]
+    }
+  ],
+  "cta": {
+    "label": "Click to Register",
+    "url": "https://hhbavsm.org/yatra",
+    "enabled": true
+  },
+  "meta": {
+    "language_supported": [
+      "en",
+      "hi"
+    ],
+    "last_updated": "2025-11-10",
+    "version": 1
+  }
+}

@@ -1,4 +1,7 @@
 // lib/modules/dashboard/dashboard_view.dart
+import 'package:bhavapp/modules/yatras/contactUs_view.dart';
+import 'package:bhavapp/modules/yatras/myRegistrations_view.dart';
+import 'package:bhavapp/modules/yatras/yatraDetails_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../home/home_view.dart';
@@ -13,9 +16,9 @@ class DashboardView extends StatefulWidget {
 
 class _DashboardViewState extends State<DashboardView> {
   int selectedIndex = 0;
-  final List<Widget> pages = [HomeView(), const SettingsView()];
+  final List<Widget> pages = [HomeView(), MyRegistrationsView(), ContactView()];
 
-  final List<String> drawerTitles = ["Home", "Settings"];
+  final List<String> drawerTitles = ["Home", "My Registrations", "Contact Us"];
 
   void onItemTapped(int index) {
     setState(() => selectedIndex = index);
@@ -25,7 +28,7 @@ class _DashboardViewState extends State<DashboardView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(drawerTitles[selectedIndex])),
-      drawer: Drawer(
+      /*drawer: Drawer(
         child: ListView(
           children: [
             const DrawerHeader(child: Text('Menu')),
@@ -47,7 +50,7 @@ class _DashboardViewState extends State<DashboardView> {
             ),
           ],
         ),
-      ),
+      ),*/
       body: pages[selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: selectedIndex,
@@ -55,8 +58,12 @@ class _DashboardViewState extends State<DashboardView> {
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
+            icon: Icon(Icons.list_alt_outlined),
+            label: 'My Registraions',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.support_agent_outlined),
+            label: 'Contact Us',
           ),
         ],
       ),

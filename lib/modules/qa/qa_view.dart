@@ -1,1 +1,0 @@
-// Placeholder for lib/modules/qa/qa_view.dart
