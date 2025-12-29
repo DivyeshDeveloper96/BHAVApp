@@ -9,7 +9,7 @@ class SplashView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Future.delayed(const Duration(seconds: 2), () {
-      Get.offAllNamed(Routes.login);
+      Get.offAllNamed(Routes.dashboard);
     });
 
     return const Scaffold(

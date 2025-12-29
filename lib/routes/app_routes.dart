@@ -13,4 +13,5 @@ abstract class Routes {
   static const billPaymentHistory = '/billPaymentHistory';
   static const contactUs = '/contactUs';
   static const registraionDeatils = '/registraionDetails';
+  static const verifyotp = '/verifyotp';
 }

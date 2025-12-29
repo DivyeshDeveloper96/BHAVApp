@@ -1,5 +1,7 @@
 // lib/modules/login/login_view.dart
 import 'package:bhavapp/core/themes/colorConstants.dart';
+import 'package:bhavapp/modules/login/verifyOtp_view.dart';
+import 'package:bhavapp/widgets/AppBottomSheet.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../routes/app_routes.dart';
@@ -95,11 +97,22 @@ class LoginView extends StatelessWidget {
                 ),
               ),
               onPressed: () {
+                Get.back();
                 // TODO: Call OTP / Login API
+                AppBottomSheet.show(
+                  context,
+                  title: "Verify Otp",
+                  child: OtpVerificationView(),
+                );
+                //Get.toNamed(Routes.otpVerification)
               },
               child: const Text(
                 "Continue",
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ),

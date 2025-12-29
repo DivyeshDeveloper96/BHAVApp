@@ -6,17 +6,22 @@ import 'core/themes/app_theme.dart';
 import 'core/themes/theme_controller.dart';
 
 void main() {
-    WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   Get.put(ThemeController()); // Initialize theme controller
+  /*await Supabase.initialize(
+    url: 'https://YOUR_PROJECT_ID.supabase.co',
+    anonKey: 'YOUR_ANON_KEY',
+  );*/
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-   @override
+  @override
   Widget build(BuildContext context) {
     final themeController = Get.find<ThemeController>();
 
-    return Obx(() => GetMaterialApp(
+    return Obx(() =>
+        GetMaterialApp(
           debugShowCheckedModeBanner: false,
           title: "Spiritual Base App",
           theme: AppTheme.lightTheme,

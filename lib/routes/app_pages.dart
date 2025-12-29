@@ -1,4 +1,5 @@
 // lib/routes/app_pages.dart
+import 'package:bhavapp/modules/login/verifyOtp_view.dart';
 import 'package:bhavapp/modules/yatras/billpaymentHistory_view.dart';
 import 'package:bhavapp/modules/yatras/contactUs_view.dart';
 import 'package:bhavapp/modules/yatras/myRegistrations_view.dart';
@@ -30,6 +31,10 @@ class AppPages {
     GetPage(
       name: Routes.registraionDeatils,
       page: () => const RegistrationDetailsView(),
+    ),
+    GetPage(
+      name: Routes.verifyotp,
+      page: () => const OtpVerificationView(),
     ),
   ];
 }
