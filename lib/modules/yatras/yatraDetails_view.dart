@@ -1,6 +1,9 @@
 import 'dart:convert';
 
 import 'package:bhavapp/core/themes/colorConstants.dart';
+import 'package:bhavapp/modules/login/login_view.dart';
+import 'package:bhavapp/widgets/AppBottomSheet.dart';
+import 'package:bhavapp/widgets/customButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_html/flutter_html.dart';
@@ -34,7 +37,6 @@ import '../../widgets/child_scaffold.dart';
   }
 }*/
 
-
 class YatraDetailsView extends StatelessWidget {
   const YatraDetailsView({super.key});
 
@@ -45,16 +47,27 @@ class YatraDetailsView extends StatelessWidget {
         children: [
           ListView(
             padding: const EdgeInsets.only(bottom: 140),
-            children: const [
+            children: [
               _YatraHeader(),
               _YatraOverview(),
               _YatraHighlights(),
               _YatraInfoList(),
+              CustomButton(
+                buttonType: ButtonType.filled,
+                onTap: () {
+                  showLoginBottomSheet(context);
+                },
+                title: "Click to Register",
+              ),
             ],
           ),
         ],
       ),
     );
+  }
+
+  void showLoginBottomSheet(BuildContext context) {
+    AppBottomSheet.show(context, title: "Login", child: LoginView());
   }
 }
 
@@ -76,9 +89,7 @@ class _YatraHeader extends StatelessWidget {
             ),
           ),
         ),
-        Positioned.fill(
-          child: Container(color: Colors.black45),
-        ),
+        Positioned.fill(child: Container(color: Colors.black45)),
         const Positioned(
           bottom: 20,
           left: 16,
@@ -90,12 +101,11 @@ class _YatraHeader extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-        )
+        ),
       ],
     );
   }
 }
-
 
 class _YatraOverview extends StatelessWidget {
   const _YatraOverview();
@@ -111,7 +121,6 @@ class _YatraOverview extends StatelessWidget {
     );
   }
 }
-
 
 class _YatraHighlights extends StatelessWidget {
   const _YatraHighlights();
@@ -149,7 +158,6 @@ class _Highlight extends StatelessWidget {
     );
   }
 }
-
 
 class _YatraInfoList extends StatelessWidget {
   const _YatraInfoList();
