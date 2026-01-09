@@ -25,7 +25,7 @@ class ApiManager {
       InterceptorsWrapper(
         onRequest: (options, handler) async {
           printValue("Request APIUrl : ${options.uri} ---- ${options.method}");
-         /* bool isLoggedIn = await SharedPrefManager.instance.isLoggedIn();
+          /* bool isLoggedIn = await SharedPrefManager.instance.isLoggedIn();
           if (isLoggedIn) {
             String? token = await SharedPrefManager.instance.getAccessToken();
             options.headers["Authorization"] = token;
@@ -38,7 +38,7 @@ class ApiManager {
           printValue("Response code----${response.statusCode}");
           printValue(response.data);
           if (response?.statusCode == 401) {
-           /* UtilsCommon().signOut();
+            /* UtilsCommon().signOut();
             UtilsCommon.showToastSnackbar(
                 title: "Alert",
                 msg: 'Session expired, Please login again...',
@@ -49,7 +49,8 @@ class ApiManager {
         },
         onError: (error, handler) {
           printValue(
-              "Error APIUrl : ${error.requestOptions.uri} ---- ${error.requestOptions.method}");
+            "Error APIUrl : ${error.requestOptions.uri} ---- ${error.requestOptions.method}",
+          );
           printValue("Error APIBody----${error.requestOptions.data}");
           printValue("Error----${error.message}");
           printValue("Error code----${error.response?.statusCode}");
@@ -99,39 +100,66 @@ extension ApiManagerExtension on ApiManager {
       var responseBody;
       Response response;
       if (request.method == ApiType.get) {
-        response = await _dio.get(request.endpoint,
-            queryParameters: request.query,
-            options: Options(headers: request.headers));
+        response = await _dio.get(
+          request.endpoint,
+          queryParameters: request.query,
+          options: Options(headers: request.headers),
+        );
         responseBody = response.data;
       } else if (request.method == ApiType.post) {
-        response = await _dio.post(request.endpoint,
-            data: request.body, options: Options(headers: request.headers));
+        response = await _dio.post(
+          request.endpoint,
+          data: request.body,
+          options: Options(headers: request.headers),
+        );
         responseBody = response.data;
       } else if (request.method == ApiType.put) {
-        response = await _dio.put(request.endpoint,
-            data: request.body, options: Options(headers: request.headers));
+        response = await _dio.put(
+          request.endpoint,
+          data: request.body,
+          options: Options(headers: request.headers),
+        );
         responseBody = response.data;
       } else if (request.method == ApiType.delete) {
-        response = await _dio.delete(request.endpoint,
-            data: request.body, options: Options(headers: request.headers));
+        response = await _dio.delete(
+          request.endpoint,
+          data: request.body,
+          options: Options(headers: request.headers),
+        );
         responseBody = response.data;
       } else if (request.method == ApiType.patch) {
-        response = await _dio.patch(request.endpoint,
-            data: request.body, options: Options(headers: request.headers));
+        response = await _dio.patch(
+          request.endpoint,
+          data: request.body,
+          options: Options(headers: request.headers),
+        );
         responseBody = response.data;
       } else {
         throw Exception("Invalid API type");
       }
 
-      if (response.statusCode == 200 && responseBody['Status'] == 'Success') {
+      final bodyMap =
+          (responseBody is Map<String, dynamic>)
+              ? responseBody
+              : <String, dynamic>{};
+
+      final int statusCode = response.statusCode ?? 0;
+      final String? responseStatus =
+          (bodyMap['ResponseStatus'] ?? bodyMap['Status'])
+              ?.toString()
+              .toLowerCase();
+      final bool isSuccessStatus = statusCode == 200 || statusCode == 201;
+      final bool hasData =
+          bodyMap.containsKey('Data') && bodyMap['Data'] != null;
+
+      if (isSuccessStatus && (responseStatus == 'success' || hasData)) {
         final parsedData = TaskParserRegistry.parse<T>(
           taskcode,
-          responseBody['Data'],
+          bodyMap['Data'],
         );
-        return ApiResponse<T>.fromJson(responseBody, (_) => parsedData);
+        return ApiResponse<T>.fromJson(bodyMap, (_) => parsedData);
       } else {
-        // Fail case - still return a valid ApiResponse with null data
-        return ApiResponse<T>.fromJson(responseBody, (_) => null as T);
+        return ApiResponse<T>.fromJson(bodyMap, (_) => null as T);
       }
     } on DioException catch (e) {
       if (e.response != null && e.response?.data is Map<String, dynamic>) {
@@ -168,10 +196,7 @@ extension UploadExtension on ApiManager {
         contentType: mimeType != null ? MediaType.parse(mimeType) : null,
       );
 
-      final formData = FormData.fromMap({
-        ...body,
-        filedKey: multipartFile,
-      });
+      final formData = FormData.fromMap({...body, filedKey: multipartFile});
 
       request.headers?["Content-Type"] = 'multipart/form-data';
       final response = await _dio.post(

@@ -1,6 +1,5 @@
-package com.vaisnavaswami.bhavapp;
+package com.vaisnavaswami.bhavapp
 
-import io.flutter.embedding.android.FlutterActivity;
+import io.flutter.embedding.android.FlutterActivity
 
-public class MainActivity extends FlutterActivity {
-}
+class MainActivity : FlutterActivity()

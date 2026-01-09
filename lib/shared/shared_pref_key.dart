@@ -1,4 +1,6 @@
+import 'dart:convert';
 
+import 'package:bhavapp/modules/login/verifyOtpModel.dart';
 import 'package:bhavapp/shared/shared_pref_manager.dart';
 
 /// Enum for all Shared Preferences keys
@@ -9,7 +11,7 @@ enum SharedPrefKey {
   accessToken,
   userModel,
   userRole,
-  dashboarAddSchoolBtnClicked
+  dashboarAddSchoolBtnClicked,
 
   // Add more keys as needed
 }
@@ -21,14 +23,6 @@ extension SharedPref on SharedPrefManager {
 
   Future<void> setLoginStatus(bool status) async {
     return await saveBool(SharedPrefKey.isLoggedIn, status);
-  }
-
-  Future<void> setDashboardAddSchooleClickedStatus(bool status) async {
-    return await saveBool(SharedPrefKey.dashboarAddSchoolBtnClicked, status);
-  }
-
-  Future<bool> getDashboardVerifyStatus() async {
-    return await getBool(SharedPrefKey.dashboarAddSchoolBtnClicked) ?? false;
   }
 
   //registerd
@@ -47,5 +41,23 @@ extension SharedPref on SharedPrefManager {
 
   Future<void> setAccessToken(String token) async {
     return await saveString(SharedPrefKey.accessToken, token);
+  }
+
+  // store whole user model as JSON
+  Future<VerifyOtpModel?> getUserModel() async {
+    final jsonString = await getString(SharedPrefKey.userModel);
+    if (jsonString == null) return null;
+    try {
+      final Map<String, dynamic> map =
+          jsonDecode(jsonString) as Map<String, dynamic>;
+      return VerifyOtpModel.fromJson(map);
+    } catch (_) {
+      return null;
+    }
+  }
+
+  Future<void> setUserModel(VerifyOtpModel model) async {
+    final jsonString = jsonEncode(model.toJson());
+    return await saveString(SharedPrefKey.userModel, jsonString);
   }
 }

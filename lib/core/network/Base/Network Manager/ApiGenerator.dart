@@ -10,10 +10,26 @@ class ApiGenerator {
     return request;
   }
 
-  static ApiRequest updateProfileImage() {
+  static ApiRequest loginSentOtp(Map<String, dynamic> body) {
     ApiRequest request = ApiRequest();
-    request.endpoint = ApiUrls.updateProfileImageUrl;
+    request.endpoint = ApiUrls.loginSentOTP;
+    request.body = body;
     request.method = ApiType.post;
+    return request;
+  }
+
+  static ApiRequest verifyOtp(Map<String, dynamic> body) {
+    ApiRequest request = ApiRequest();
+    request.endpoint = ApiUrls.verifyOtp;
+    request.body = body;
+    request.method = ApiType.post;
+    return request;
+  }
+
+  static ApiRequest getYatraList() {
+    ApiRequest request = ApiRequest();
+    request.endpoint = ApiUrls.getYatraListUrl;
+    request.method = ApiType.get;
     return request;
   }
 }

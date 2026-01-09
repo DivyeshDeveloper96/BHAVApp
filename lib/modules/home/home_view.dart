@@ -1,8 +1,9 @@
 // lib/modules/home/home_view.dart
+import 'package:bhavapp/core/paginatedListview/paginatedListView.dart';
+import 'package:bhavapp/modules/home/home_controller.dart';
+import 'package:bhavapp/utils/utilsCommon.dart';
 import 'package:flutter/material.dart';
-import 'home_controller.dart';
 import 'package:get/get.dart' show Get, Inst;
-import 'package:flutter/material.dart';
 import 'package:youtube_player_embed/youtube_player_embed.dart';
 import 'package:get/get.dart';
 import '../../routes/app_routes.dart';
@@ -15,71 +16,47 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  HomeController homeController = Get.put(HomeController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-
-      /// BODY
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.fromLTRB(16, 16, 16, 120),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             /// HERO CARD
             ClipRRect(
               borderRadius: BorderRadius.circular(16),
-              child: Container(height: 200, child: SimpleYoutubeEmbed()),
+              child: Container(height: 250, child: SimpleYoutubeEmbed()),
             ),
-
             const SizedBox(height: 24),
-
-            /// UPCOMING YATRAS
             const Text(
               "Upcoming Yatras",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 12),
-
-            ListView(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              children: [
-                _yatraTile(
-                  title: "Pandharpur ",
-                  date: "Starts January 16, 2025",
-                  image:
-                      "https://lh3.googleusercontent.com/aida-public/AB6AXuBE7Lj4_ypPlnzYwF5CAY16nc9wOz6QblnGhBwrYgTXHnMuzkrr6Gd2hnu_4pJAwQFN1a88MLW1MIwm7ZZ7g-OTflFR05soLC8VdKh6y3SBw_up54Tskrzsy2JkV2iNV1BMJ61giv5I4kMQQdgTQcHxN0tZDxokzGCjuOP3TLXhz4N2LJ983HDalnd4wTELLQRD8EJbWYd6CAcPhMoIKMNFV1T6OeJlPL58fYGeyK3qE-jQwrz1FfYsQh3ExfVm0kuk3PNXI379SEw",
-                  onTap: () {
-                    Get.toNamed(Routes.yatraDetails);
-                  },
-                ),
-                _yatraTile(
-                  title: "Nirjal Ekdashi",
-                  date: "Starts June 24, 2026",
-                  image:
-                      "https://lh3.googleusercontent.com/aida-public/AB6AXuBE7Lj4_ypPlnzYwF5CAY16nc9wOz6QblnGhBwrYgTXHnMuzkrr6Gd2hnu_4pJAwQFN1a88MLW1MIwm7ZZ7g-OTflFR05soLC8VdKh6y3SBw_up54Tskrzsy2JkV2iNV1BMJ61giv5I4kMQQdgTQcHxN0tZDxokzGCjuOP3TLXhz4N2LJ983HDalnd4wTELLQRD8EJbWYd6CAcPhMoIKMNFV1T6OeJlPL58fYGeyK3qE-jQwrz1FfYsQh3ExfVm0kuk3PNXI379SEw",
-                  onTap: () {},
-                ),
-              ],
+            Expanded(
+              child: PaginatedListView(
+                isShowSearch: false,
+                controller: homeController,
+                noListMessage: "No Data Found!",
+                itemBuilder:
+                    (context, item) => _yatraTile(
+                      title: item.name ?? "",
+                      date:
+                          "${UtilsCommon.formatDateAs(item.yatraStartAt ?? "", "dd MMM yyyy")} to ${UtilsCommon.formatDateAs(item.yatraEndAt ?? "", "dd MMM yyyy")}" ??
+                          "",
+                      image: /*item.imageUrl ?? */ "https://picsum.photos/200",
+                      onTap: () {
+                        Get.toNamed(Routes.yatraDetails);
+                      },
+                    ),
+              ),
             ),
-
             const SizedBox(height: 24),
-
-            /// TRAVEL ESSENTIALS
-            /* const Text(
-              "Travel Essentials",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 12),*/
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                _EssentialItem(icon: Icons.luggage, label: "Packing List"),
-                _EssentialItem(icon: Icons.map, label: "Route Map"),
-                _EssentialItem(icon: Icons.support_agent, label: "Support"),
-              ],
-            ),
           ],
         ),
       ),
@@ -90,7 +67,7 @@ class _HomeViewState extends State<HomeView> {
     required String title,
     required String date,
     required String image,
-    required Function? onTap(),
+    required Function? Function() onTap,
   }) {
     return InkWell(
       onTap: onTap,

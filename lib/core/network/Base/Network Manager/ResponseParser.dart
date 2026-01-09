@@ -1,12 +1,22 @@
+import 'package:bhavapp/modules/home/yatraListModel.dart';
+
 import '../../../../shared/common.dart';
 import 'ApiTaskCode.dart';
 
 class TaskParserRegistry {
   static final Map<ApiTaskCode, dynamic Function(dynamic)> _parsers = {
-   /* ApiTaskCode.fetchProfile: (json) =>
-        ProfileDetailResponseModel.fromJson(json),*/
-   /* ApiTaskCode.getLangauagesList: (json) =>
-        (json as List).map((e) => LanguageListResponse.fromJson(e)).toList(),*/
+    /* ApiTaskCode.fetchProfile: (json) =>
+        ProfileDetailResponseModel.fromJson(json),
+    ApiTaskCode.getLangauagesList: (json) =>
+        (json as List).map((e) => LanguageListResponse.fromJson(e)).toList(),
+    ApiTaskCode.updateLanguage: (json) => LanguageSaveResponse.fromJson(json),
+    ApiTaskCode.getDashPrincipleOverview: (json) =>
+        (json as List).map((e) => DashOverviewModel.fromJson(e)).toList(),*/
+    ApiTaskCode.verifyOTP: (json) => json,
+    ApiTaskCode.loginSentOTP: (json) => json,
+    ApiTaskCode.getYatraList:
+        (json) =>
+            (json as List).map((e) => YatraListModel.fromJson(e)).toList(),
   };
 
   static T parse<T>(ApiTaskCode task, dynamic data) {

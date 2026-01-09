@@ -1,11 +1,12 @@
 // lib/modules/dashboard/dashboard_view.dart
 import 'package:bhavapp/modules/yatras/contactUs_view.dart';
 import 'package:bhavapp/modules/yatras/myRegistrations_view.dart';
-import 'package:bhavapp/modules/yatras/yatraDetails_view.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import '../../shared/shared_pref_key.dart';
+import '../../shared/shared_pref_manager.dart';
+import '../../widgets/AppBottomSheet.dart';
 import '../home/home_view.dart';
-import '../settings/settings_view.dart';
+import '../login/login_view.dart';
 
 class DashboardView extends StatefulWidget {
   const DashboardView({super.key});
@@ -16,18 +17,48 @@ class DashboardView extends StatefulWidget {
 
 class _DashboardViewState extends State<DashboardView> {
   int selectedIndex = 0;
+  bool isLoggedIn = false;
   final List<Widget> pages = [HomeView(), MyRegistrationsView(), ContactView()];
 
   final List<String> drawerTitles = ["Home", "My Registrations", "Contact Us"];
 
-  void onItemTapped(int index) {
+  @override
+  void initState() {
+    super.initState();
+    _loadLoginState();
+  }
+
+  void _loadLoginState() async {
+    final logged = await SharedPrefManager.instance.isLoggedIn();
+    setState(() => isLoggedIn = logged);
+  }
+
+  void onItemTapped(int index) async {
+    if (index == 1) {
+      final logged = await SharedPrefManager.instance.isLoggedIn();
+      if (!logged) {
+        showLoginBottomSheet(context);
+        return;
+      }
+    }
     setState(() => selectedIndex = index);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(drawerTitles[selectedIndex])),
+      appBar: AppBar(
+        title: Text(drawerTitles[selectedIndex]),
+        actions: [
+          Visibility(
+            visible: isLoggedIn,
+            child: IconButton(
+              icon: Icon(Icons.logout_outlined),
+              onPressed: () {},
+            ),
+          ),
+        ],
+      ),
       /*drawer: Drawer(
         child: ListView(
           children: [
@@ -68,5 +99,9 @@ class _DashboardViewState extends State<DashboardView> {
         ],
       ),
     );
+  }
+
+  void showLoginBottomSheet(BuildContext context) {
+    AppBottomSheet.show(context, title: "Login", child: LoginView());
   }
 }

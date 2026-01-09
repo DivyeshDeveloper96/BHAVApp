@@ -34,7 +34,7 @@ class AppPages {
     ),
     GetPage(
       name: Routes.verifyotp,
-      page: () => const OtpVerificationView(),
+      page: () => OtpVerificationView(Get.arguments as String),
     ),
   ];
 }

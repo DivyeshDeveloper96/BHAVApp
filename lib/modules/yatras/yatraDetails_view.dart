@@ -7,7 +7,8 @@ import 'package:bhavapp/widgets/customButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_html/flutter_html.dart';
-
+import 'package:firebase_messaging/firebase_messaging.dart';
+import '../../utils/utilsCommon.dart';
 import '../../widgets/child_scaffold.dart';
 
 /*class YatradetailsView extends StatelessWidget {
@@ -54,7 +55,11 @@ class YatraDetailsView extends StatelessWidget {
               _YatraInfoList(),
               CustomButton(
                 buttonType: ButtonType.filled,
-                onTap: () {
+                onTap: () async {
+                  final messaging = FirebaseMessaging.instance;
+                  await messaging.requestPermission();
+                  final token = await messaging.getToken();
+                  print("FCM Token: $token");
                   showLoginBottomSheet(context);
                 },
                 title: "Click to Register",

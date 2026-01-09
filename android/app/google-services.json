@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "958487597412",
+    "project_id": "bavs-app",
+    "storage_bucket": "bavs-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:958487597412:android:3ac6827cab4051825d6a71",
+        "android_client_info": {
+          "package_name": "com.vaisnavaswami.bhavapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxJrbFvOQKA1LJWSqKoklVZ0HvIjDkJDg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
