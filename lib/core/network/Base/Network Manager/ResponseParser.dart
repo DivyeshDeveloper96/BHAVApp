@@ -1,5 +1,6 @@
 import 'package:bhavapp/modules/home/yatraListModel.dart';
 
+import '../../../../modules/yatras/yatraDetails_model.dart';
 import '../../../../shared/common.dart';
 import 'ApiTaskCode.dart';
 
@@ -17,6 +18,8 @@ class TaskParserRegistry {
     ApiTaskCode.getYatraList:
         (json) =>
             (json as List).map((e) => YatraListModel.fromJson(e)).toList(),
+    ApiTaskCode.getYatraDetails:
+        (json) => YatraDetailsModel.fromJson(Map<String, dynamic>.from(json)),
   };
 
   static T parse<T>(ApiTaskCode task, dynamic data) {

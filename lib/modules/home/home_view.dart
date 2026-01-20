@@ -1,12 +1,13 @@
 // lib/modules/home/home_view.dart
 import 'package:bhavapp/core/paginatedListview/paginatedListView.dart';
 import 'package:bhavapp/modules/home/home_controller.dart';
+import 'package:bhavapp/routes/page_identifier.dart';
 import 'package:bhavapp/utils/utilsCommon.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' show Get, Inst;
 import 'package:youtube_player_embed/youtube_player_embed.dart';
 import 'package:get/get.dart';
-import '../../routes/app_routes.dart';
+import '../../widgets/customImageLoader.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -49,9 +50,13 @@ class _HomeViewState extends State<HomeView> {
                       date:
                           "${UtilsCommon.formatDateAs(item.yatraStartAt ?? "", "dd MMM yyyy")} to ${UtilsCommon.formatDateAs(item.yatraEndAt ?? "", "dd MMM yyyy")}" ??
                           "",
-                      image: /*item.imageUrl ?? */ "https://picsum.photos/200",
+                      image: item.imageUrl ?? "",
+                      /*https://picsum.photos/200*/
                       onTap: () {
-                        Get.toNamed(Routes.yatraDetails);
+                        Get.toNamed(
+                          PageIdentifier.yatraDetails.name,
+                          arguments: item.id,
+                        );
                       },
                     ),
               ),
@@ -83,12 +88,7 @@ class _HomeViewState extends State<HomeView> {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
-              child: Image.network(
-                image,
-                height: 70,
-                width: 70,
-                fit: BoxFit.cover,
-              ),
+              child: CustomImageLoader(imageUrl: image, width: 80, height: 80),
             ),
             const SizedBox(width: 12),
             Expanded(

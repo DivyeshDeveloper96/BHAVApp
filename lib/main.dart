@@ -1,5 +1,6 @@
 import 'package:bhavapp/flutter_options.dart';
-import 'package:bhavapp/routes/app_pages.dart';
+import 'package:bhavapp/routes/page_factory.dart';
+import 'package:bhavapp/routes/page_identifier.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,9 +10,7 @@ import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   Get.put(ThemeController()); // Initialize theme controller
   /*await Supabase.initialize(
     url: 'https://YOUR_PROJECT_ID.supabase.co',
@@ -25,15 +24,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeController = Get.find<ThemeController>();
 
-    return Obx(() =>
-        GetMaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: "Spiritual Base App",
-          theme: AppTheme.lightTheme,
-          darkTheme: AppTheme.darkTheme,
-          themeMode: themeController.themeMode.value,
-          initialRoute: AppPages.initial,
-          getPages: AppPages.routes,
-        ));
+    return Obx(
+      () => GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: "Spiritual Base App",
+        theme: AppTheme.lightTheme,
+        darkTheme: AppTheme.darkTheme,
+        themeMode: themeController.themeMode.value,
+        initialRoute: PageIdentifier.initial.name,
+        getPages: PageFactory.getPages,
+      ),
+    );
   }
 }

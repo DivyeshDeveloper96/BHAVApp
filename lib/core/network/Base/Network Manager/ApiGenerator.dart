@@ -32,4 +32,12 @@ class ApiGenerator {
     request.method = ApiType.get;
     return request;
   }
+
+  static ApiRequest getYatraDeatils(String yatraId) {
+    ApiRequest request = ApiRequest();
+    request.endpoint =
+        "${ApiUrls.getYatraDetailsUrl}$yatraId?includeClosed=true";
+    request.method = ApiType.get;
+    return request;
+  }
 }

@@ -24,4 +24,5 @@ class ApiUrls {
 
   static String get getProfileUrl => '$baseUrl/api/v2/users/profile-detail';
 
+  static String get getYatraDetailsUrl => '$baseUrl/admin/yatras/';
 }

@@ -1,8 +1,8 @@
 // lib/modules/splash/splash_view.dart
 import 'package:bhavapp/core/themes/colorConstants.dart';
+import 'package:bhavapp/routes/page_identifier.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../routes/app_routes.dart';
 
 class SplashView extends StatelessWidget {
   const SplashView({super.key});
@@ -10,7 +10,7 @@ class SplashView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
      Future.delayed(const Duration(seconds: 2), () {
-      Get.offAllNamed(Routes.dashboard);
+      Get.offAllNamed(PageIdentifier.dashboard.name);
     });
 
     return Scaffold(
