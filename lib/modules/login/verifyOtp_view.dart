@@ -2,6 +2,7 @@ import 'dart:async'; // 1. Import the async library for the Timer
 
 import 'package:bhavapp/core/themes/colorConstants.dart';
 import 'package:bhavapp/modules/login/verifyOtp_controller.dart';
+import 'package:bhavapp/routes/page_identifier.dart';
 import 'package:bhavapp/utils/utilsCommon.dart';
 import 'package:flutter/gestures.dart'; // Import for TapGestureRecognizer
 import 'package:flutter/material.dart';
@@ -192,6 +193,7 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
                           isSuccess: true,
                           message: "OTP verified successfully",
                         );
+                        Get.to(PageIdentifier.registraionDeatils.name);
                       } else {
                         UtilsCommon.showCustomSnackBar(
                           context,

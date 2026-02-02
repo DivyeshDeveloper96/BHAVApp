@@ -192,8 +192,8 @@ class PaginatedListView<T> extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.asset('assets/Images/no_data_img.webp'),
-        const SizedBox(height: 5),
+        /*Image.asset('assets/images/no_data_img.webp',),
+        const SizedBox(height: 5),*/
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(

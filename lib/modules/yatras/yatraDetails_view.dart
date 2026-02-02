@@ -10,11 +10,11 @@ import 'package:bhavapp/widgets/customImageLoader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import '../../shared/AppConstants.dart';
 import '../../utils/utilsCommon.dart';
 import '../../widgets/child_scaffold.dart';
 import 'package:get/get.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 class YatraDetailsView extends StatefulWidget {
   const YatraDetailsView({super.key});
@@ -226,26 +226,19 @@ class _YatraDetailsViewState extends State<YatraDetailsView> {
                 ? Center(child: CircularProgressIndicator())
                 : Stack(
                   children: [
-                    SingleChildScrollView(
-                      padding: const EdgeInsets.only(bottom: 80),
-                      // space for button
-                      child: Column(
-                        children: [
-                          YatraHeader(),
-                          yatraContent(
-                            yatraDetailsController
-                                    .yatraDetailsResp
-                                    .value!
-                                    .yatraContentBlock![0]
-                                    .contentHtml ??
-                                "",
-                            htmlStyles,
-                          ),
-                        ],
+                    InAppWebView(
+                      initialUrlRequest: URLRequest(
+                        url: WebUri('https://yatra.vaisnavaswami.com/'),
                       ),
+                      onLoadStart: (controller, url) {
+                        debugPrint('Started loading: $url');
+                      },
+                      onLoadStop: (controller, url) {
+                        debugPrint('Finished loading: $url');
+                      },
                     ),
                     // Sticky Bottom Container
-                    Positioned(
+                   /* Positioned(
                       left: 0,
                       right: 0,
                       bottom: 0,
@@ -277,7 +270,7 @@ class _YatraDetailsViewState extends State<YatraDetailsView> {
                           ),
                         ),
                       ),
-                    ),
+                    ),*/
                   ],
                 ),
       ),

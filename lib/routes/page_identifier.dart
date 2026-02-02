@@ -1,5 +1,6 @@
 import 'package:bhavapp/modules/login/login_view.dart';
 import 'package:bhavapp/modules/splash/splash_view.dart';
+import 'package:bhavapp/modules/youtubeSample/pages/youtube_list_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -27,7 +28,8 @@ enum PageIdentifier {
   billPaymentHistory,
   contactUs,
   registraionDeatils,
-  verifyotp;
+  verifyotp,
+  youtubepage;
 
   get name {
     switch (this) {
@@ -59,6 +61,8 @@ enum PageIdentifier {
         return '/registraionDeatils';
       case verifyotp:
         return '/verifyotp';
+      case youtubepage:
+        return '/youtubepage';
       default:
         return '/';
     }
@@ -88,6 +92,8 @@ enum PageIdentifier {
         return RegistrationDetailsView();
       case verifyotp:
         return OtpVerificationView(Get.arguments as String);
+      case youtubepage:
+        return YouTubeListPage();
       default:
         return SplashView();
     }
