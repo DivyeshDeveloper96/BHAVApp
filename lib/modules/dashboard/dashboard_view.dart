@@ -1,4 +1,5 @@
 // lib/modules/dashboard/dashboard_view.dart
+import 'package:bhavapp/modules/more/socialmedia/followUsOnSocialMedia.dart';
 import 'package:bhavapp/modules/yatras/contactUs_view.dart';
 import 'package:bhavapp/modules/yatras/myRegistrations_view.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,11 @@ class DashboardView extends StatefulWidget {
 
 class _DashboardViewState extends State<DashboardView> {
   int selectedIndex = 0;
-  final List<Widget> pages = [HomeView(), MyRegistrationsView(), ContactView()];
+  final List<Widget> pages = [
+    HomeView(),
+    MyRegistrationsView(),
+    SocialMediaLinksPage(),
+  ];
 
   final List<String> drawerTitles = ["Home", "My Registrations", "Contact Us"];
 

@@ -1,4 +1,5 @@
 import 'package:bhavapp/modules/login/login_view.dart';
+import 'package:bhavapp/modules/more/socialmedia/followUsOnSocialMedia.dart';
 import 'package:bhavapp/modules/splash/splash_view.dart';
 import 'package:bhavapp/modules/youtubeSample/pages/youtube_list_page.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,8 @@ enum PageIdentifier {
   contactUs,
   registraionDeatils,
   verifyotp,
-  youtubepage;
+  youtubepage,
+  followsocialmedia;
 
   get name {
     switch (this) {
@@ -63,6 +65,8 @@ enum PageIdentifier {
         return '/verifyotp';
       case youtubepage:
         return '/youtubepage';
+        case followsocialmedia:
+        return '/followsocialmedia';
       default:
         return '/';
     }
@@ -94,6 +98,8 @@ enum PageIdentifier {
         return OtpVerificationView(Get.arguments as String);
       case youtubepage:
         return YouTubeListPage();
+        case followsocialmedia:
+        return const SocialMediaLinksPage();
       default:
         return SplashView();
     }
