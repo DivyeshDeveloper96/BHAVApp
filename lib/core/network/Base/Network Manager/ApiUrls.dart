@@ -15,6 +15,11 @@ class ApiUrls {
     }
   }
 
+  static String get youtubebaseUrl {
+        return 'https://vaishnav-swami-yatra-api-yxnv.vercel.app';
+
+  }
+
   // Define your API endpoints
   static String get loginSentOTP => '$baseUrl/auth/otp';
 
@@ -25,4 +30,6 @@ class ApiUrls {
   static String get getProfileUrl => '$baseUrl/api/v2/users/profile-detail';
 
   static String get getYatraDetailsUrl => '$baseUrl/admin/yatras/';
+
+  static String get getYoutubestUrl => '$youtubebaseUrl/admin/yatras?includeClosed=false';
 }

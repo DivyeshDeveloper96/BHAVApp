@@ -1,9 +1,9 @@
 import 'package:bhavapp/core/network/Base/BaseController.dart';
-import 'package:bhavapp/modules/login/verifyOtpModel.dart';
+import 'package:bhavapp/modules/login/model/verifyOtpModel.dart';
 import 'package:bhavapp/shared/shared_pref_manager.dart';
 
-import '../../shared/commonControllers.dart';
-import '../../shared/shared_pref_key.dart';
+import '../../../shared/commonControllers.dart';
+import '../../../shared/shared_pref_key.dart';
 
 class VerifyOtpController extends BaseController {
   @override

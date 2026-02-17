@@ -1,10 +1,10 @@
 import 'package:bhavapp/core/network/Base/BaseController.dart';
-import 'package:bhavapp/modules/yatras/yatraDetails_model.dart';
+import 'package:bhavapp/modules/yatras/model/yatraDetails_model.dart';
 import 'package:bhavapp/shared/commonControllers.dart';
 import 'package:get/get.dart';
-import '../../core/network/Base/Network Manager/ApiGenerator.dart';
-import '../../core/network/Base/Network Manager/ApiTaskCode.dart';
-import '../../utils/utilsCommon.dart';
+import '../../../core/network/Base/Network Manager/ApiGenerator.dart';
+import '../../../core/network/Base/Network Manager/ApiTaskCode.dart';
+import '../../../utils/utilsCommon.dart';
 
 class YatraDetailsController extends BaseController {
   RxString yatraId = "".obs;

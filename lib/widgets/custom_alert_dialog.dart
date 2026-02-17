@@ -1,5 +1,5 @@
 import 'dart:ui';
-import 'package:bhavapp/widgets/customButton.dart';
+import 'package:bhavapp/widgets/custom_app_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -162,27 +162,27 @@ class _CustomAlertDialogState extends State<CustomAlertDialog>
                       ),
                   const SizedBox(height: 20),
                   widget.isSingleButton
-                      ? CustomButton(
-                        buttonType: ButtonType.filled,
-                        title: widget.btnPositiveText,
-                        onTap: widget.btnPosClick,
+                      ? AppButton(
+                        onPressed: widget.btnPosClick,
+                        type: AppButtonType.filled,
+                        text: widget.btnPositiveText,
                       )
                       : Row(
                         children: [
                           Expanded(
-                            child: CustomButton(
-                              buttonType: ButtonType.border,
-                              title: widget.btnNegativeText,
-                              onTap: widget.btnNegClick,
+                            child: AppButton(
+                              type: AppButtonType.border,
+                              text: widget.btnNegativeText,
+                              onPressed: widget.btnNegClick,
                               borderColor: Theme.of(context).primaryColor,
                             ),
                           ),
                           const SizedBox(width: 10),
                           Expanded(
-                            child: CustomButton(
-                              buttonType: ButtonType.filled,
-                              title: widget.btnPositiveText,
-                              onTap: widget.btnPosClick,
+                            child: AppButton(
+                              type: AppButtonType.filled,
+                              text: widget.btnPositiveText,
+                              onPressed: widget.btnPosClick,
                             ),
                           ),
                         ],

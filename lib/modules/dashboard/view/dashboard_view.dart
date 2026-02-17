@@ -1,14 +1,14 @@
 // lib/modules/dashboard/dashboard_view.dart
-import 'package:bhavapp/modules/more/socialmedia/followUsOnSocialMedia.dart';
-import 'package:bhavapp/modules/yatras/contactUs_view.dart';
-import 'package:bhavapp/modules/yatras/myRegistrations_view.dart';
+import 'package:bhavapp/modules/more/socialmedia/view/followUsOnSocialMedia.dart';
+import 'package:bhavapp/modules/yatras/view/contactUs_view.dart';
+import 'package:bhavapp/modules/yatras/view/myRegistrations_view.dart';
 import 'package:flutter/material.dart';
-import '../../shared/AppConstants.dart';
-import '../../shared/shared_pref_key.dart';
-import '../../shared/shared_pref_manager.dart';
-import '../../widgets/AppBottomSheet.dart';
-import '../home/home_view.dart';
-import '../login/login_view.dart';
+import '../../../shared/AppConstants.dart';
+import '../../../shared/shared_pref_key.dart';
+import '../../../shared/shared_pref_manager.dart';
+import '../../../widgets/AppBottomSheet.dart';
+import '../../home/view/home_view.dart';
+import '../../login/view/login_view.dart';
 
 class DashboardView extends StatefulWidget {
   const DashboardView({super.key});

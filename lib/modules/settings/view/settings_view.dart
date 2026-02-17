@@ -1,7 +1,7 @@
 // lib/modules/settings/settings_view.dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../core/themes/theme_controller.dart';
+import '../../../core/themes/theme_controller.dart';
 
 class SettingsView extends StatelessWidget {
   const SettingsView({super.key});

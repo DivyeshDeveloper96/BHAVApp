@@ -1,7 +1,7 @@
 import 'dart:async'; // 1. Import the async library for the Timer
 
 import 'package:bhavapp/core/themes/colorConstants.dart';
-import 'package:bhavapp/modules/login/verifyOtp_controller.dart';
+import 'package:bhavapp/modules/login/controllers/verifyOtp_controller.dart';
 import 'package:bhavapp/routes/page_identifier.dart';
 import 'package:bhavapp/utils/utilsCommon.dart';
 import 'package:flutter/gestures.dart'; // Import for TapGestureRecognizer

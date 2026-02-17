@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:bhavapp/modules/login/verifyOtpModel.dart';
+import 'package:bhavapp/modules/login/model/verifyOtpModel.dart';
 import 'package:bhavapp/shared/shared_pref_manager.dart';
 
 /// Enum for all Shared Preferences keys

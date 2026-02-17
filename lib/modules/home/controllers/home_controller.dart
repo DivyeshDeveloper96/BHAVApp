@@ -1,10 +1,10 @@
 import 'package:bhavapp/core/network/Base/BaseController.dart';
 import 'package:bhavapp/core/paginatedListview/basePaginatedController.dart';
-import 'package:bhavapp/modules/home/yatraListModel.dart';
-import '../../core/network/Base/Network Manager/ApiGenerator.dart';
-import '../../core/network/Base/Network Manager/ApiTaskCode.dart';
+import 'package:bhavapp/modules/home/model/yatraListModel.dart';
+import '../../../core/network/Base/Network Manager/ApiGenerator.dart';
+import '../../../core/network/Base/Network Manager/ApiTaskCode.dart';
 import 'package:get/get.dart';
-import '../../utils/utilsCommon.dart';
+import '../../../utils/utilsCommon.dart';
 
 class HomeController extends BasePaginatedController<YatraListModel> {
   RxList<YatraListModel> yatraList = <YatraListModel>[].obs;
@@ -32,4 +32,6 @@ class HomeController extends BasePaginatedController<YatraListModel> {
       return [];
     }
   }
+
+
 }

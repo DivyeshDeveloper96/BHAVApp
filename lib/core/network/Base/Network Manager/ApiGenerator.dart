@@ -40,4 +40,24 @@ class ApiGenerator {
     request.method = ApiType.get;
     return request;
   }
+
+  static ApiRequest getYoutubeList({String? pageToken}) {
+    String endpoint = ApiUrls.getYoutubestUrl;
+    ApiRequest request = ApiRequest();
+    request.method = ApiType.get;
+    // Build query parameters
+    List<String> params = [];
+    params.add('maxResults=10');
+    if (pageToken != null && pageToken.isNotEmpty) {
+      params.add('pageToken=$pageToken');
+    }
+    // Append query parameters to endpoint
+    if (params.isNotEmpty) {
+      request.endpoint += '?${params.join('&')}';
+    }
+    request.endpoint = endpoint;
+    request.method = ApiType.get;
+
+    return request;
+  }
 }

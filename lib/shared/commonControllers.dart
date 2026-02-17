@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../core/network/Base/BaseController.dart';
 import '../core/network/Base/Network Manager/ApiGenerator.dart';
 import '../core/network/Base/Network Manager/ApiTaskCode.dart';
-import '../modules/login/verifyOtpModel.dart';
+import '../modules/login/model/verifyOtpModel.dart';
 import '../utils/utilsCommon.dart';
 
 class CommonController extends BaseController {

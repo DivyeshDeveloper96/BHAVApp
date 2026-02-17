@@ -1,18 +1,17 @@
 import 'dart:convert';
 
 import 'package:bhavapp/core/themes/colorConstants.dart';
-import 'package:bhavapp/modules/login/login_view.dart';
-import 'package:bhavapp/modules/yatras/yatraDeatils_controller.dart';
+import 'package:bhavapp/modules/login/view/login_view.dart';
+import 'package:bhavapp/modules/yatras/controllers/yatraDeatils_controller.dart';
 import 'package:bhavapp/routes/page_identifier.dart';
 import 'package:bhavapp/widgets/AppBottomSheet.dart';
-import 'package:bhavapp/widgets/customButton.dart';
 import 'package:bhavapp/widgets/customImageLoader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_html/flutter_html.dart';
-import '../../shared/AppConstants.dart';
-import '../../utils/utilsCommon.dart';
-import '../../widgets/child_scaffold.dart';
+import '../../../shared/AppConstants.dart';
+import '../../../utils/utilsCommon.dart';
+import '../../../widgets/child_scaffold.dart';
 import 'package:get/get.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
@@ -238,7 +237,7 @@ class _YatraDetailsViewState extends State<YatraDetailsView> {
                       },
                     ),
                     // Sticky Bottom Container
-                   /* Positioned(
+                    /* Positioned(
                       left: 0,
                       right: 0,
                       bottom: 0,

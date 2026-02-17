@@ -1,19 +1,21 @@
-import 'package:bhavapp/modules/login/login_view.dart';
-import 'package:bhavapp/modules/more/socialmedia/followUsOnSocialMedia.dart';
-import 'package:bhavapp/modules/splash/splash_view.dart';
+import 'package:bhavapp/modules/login/view/login_view.dart';
+import 'package:bhavapp/modules/more/socialmedia/view/followUsOnSocialMedia.dart';
+import 'package:bhavapp/modules/signup/view/signup_view.dart';
+import 'package:bhavapp/modules/splash/view/splash_view.dart';
 import 'package:bhavapp/modules/youtubeSample/pages/youtube_list_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../modules/dashboard/dashboard_view.dart';
-import '../modules/home/home_view.dart';
-import '../modules/login/verifyOtp_view.dart';
-import '../modules/settings/settings_view.dart';
-import '../modules/yatras/billpaymentHistory_view.dart';
-import '../modules/yatras/contactUs_view.dart';
-import '../modules/yatras/myRegistrations_view.dart';
-import '../modules/yatras/registrationDetails_view.dart';
-import '../modules/yatras/yatraDetails_view.dart';
+import '../modules/dashboard/view/dashboard_view.dart';
+import '../modules/home/view/home_view.dart';
+import '../modules/login/view/verifyOtp_view.dart';
+import '../modules/profile/view/profile_view.dart';
+import '../modules/settings/view/settings_view.dart';
+import '../modules/yatras/view/billpaymentHistory_view.dart';
+import '../modules/yatras/view/contactUs_view.dart';
+import '../modules/yatras/view/myRegistrations_view.dart';
+import '../modules/yatras/view/registrationDetails_view.dart';
+import '../modules/yatras/view/yatraDetails_view.dart';
 
 enum PageIdentifier {
   initial,
@@ -31,6 +33,8 @@ enum PageIdentifier {
   registraionDeatils,
   verifyotp,
   youtubepage,
+  signup,
+  profile,
   followsocialmedia;
 
   get name {
@@ -65,8 +69,12 @@ enum PageIdentifier {
         return '/verifyotp';
       case youtubepage:
         return '/youtubepage';
-        case followsocialmedia:
+      case followsocialmedia:
         return '/followsocialmedia';
+      case signup:
+        return '/signup';
+      case profile:
+        return '/profile';
       default:
         return '/';
     }
@@ -98,8 +106,12 @@ enum PageIdentifier {
         return OtpVerificationView(Get.arguments as String);
       case youtubepage:
         return YouTubeListPage();
-        case followsocialmedia:
+      case followsocialmedia:
         return const SocialMediaLinksPage();
+      case signup:
+        return const SignupView();
+      case profile:
+        return const ProfileView();
       default:
         return SplashView();
     }

@@ -2,7 +2,7 @@
 import 'dart:math';
 
 import 'package:bhavapp/core/paginatedListview/paginatedListView.dart';
-import 'package:bhavapp/modules/home/home_controller.dart';
+import 'package:bhavapp/modules/home/controllers/home_controller.dart';
 import 'package:bhavapp/modules/youtubeSample/model/youtube_video.dart';
 import 'package:bhavapp/routes/page_identifier.dart';
 import 'package:bhavapp/utils/utilsCommon.dart';
@@ -10,10 +10,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart' show Get, Inst;
 import 'package:youtube_player_embed/youtube_player_embed.dart';
 import 'package:get/get.dart';
-import '../../widgets/customImageLoader.dart';
-import '../youtubeSample/controllers/youtube_controller.dart';
-import '../youtubeSample/pages/youtubeplayerpage.dart';
-import '../youtubeSample/services/youtube_api_service.dart';
+import '../../../widgets/customImageLoader.dart';
+import '../../../widgets/dashboard_carousel.dart';
+import '../../youtubeSample/controllers/youtube_controller.dart';
+import '../../youtubeSample/pages/youtubeplayerpage.dart';
+import '../../youtubeSample/services/youtube_api_service.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -40,13 +41,8 @@ class _HomeViewState extends State<HomeView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              /// HERO CARD
-              ClipRRect(
-                borderRadius: BorderRadius.circular(16),
-                child: Container(height: 250, child: SimpleYoutubeEmbed()),
-              ),
+              DashboardCarousel(),
               const SizedBox(height: 24),
-
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Row(

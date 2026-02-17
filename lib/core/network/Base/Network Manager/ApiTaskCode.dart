@@ -2,5 +2,6 @@ enum ApiTaskCode {
   loginSentOTP,
   verifyOTP,
   getYatraList,
-  getYatraDetails
+  getYatraDetails,
+  getYoutubeList,
 }
